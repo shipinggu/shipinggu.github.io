@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f4c81" />
   <title>Shiping Gu | Personal Website</title>
   <meta name="description" content="Personal website of Shiping Gu: Structural-State Mathematics, Optical Fiber Chemistry, Artificial Intelligence, energy storage and carbon sequestration, triple-play convergence, Internet of Vehicles, and other interdisciplinary innovations." />
   <style>
@@ -27,16 +28,12 @@
       color: var(--text);
       background: linear-gradient(180deg, #f8fbff 0%, #f4f6fa 100%);
       line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
     }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    body.menu-open { overflow: hidden; }
-
-    main {
-      overflow-x: hidden;
-    }
 
     .container {
       width: min(var(--max), calc(100% - 32px));
@@ -74,30 +71,6 @@
       font-size: 14px;
       align-items: center;
     }
-
-    .nav-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--primary);
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(15, 76, 129, 0.08);
-      flex-shrink: 0;
-    }
-
-    .nav-toggle svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .nav-toggle .icon-close { display: none; }
-    .topbar.is-open .nav-toggle .icon-menu { display: none; }
-    .topbar.is-open .nav-toggle .icon-close { display: block; }
 
     .lang-switch {
       display: inline-flex;
@@ -172,11 +145,6 @@
       color: var(--primary);
       font-size: 14px;
       font-weight: 600;
-    }
-
-    .paper, .patent, .meta div, .timeline-item, .card, .hero-card {
-      overflow-wrap: anywhere;
-      word-break: break-word;
     }
 
     .actions {
@@ -385,124 +353,149 @@
       color: #fff;
     }
 
+
+    img, svg { max-width: 100%; height: auto; }
+
+    .nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
+      border-radius: 12px;
+      min-width: 44px;
+      height: 44px;
+      padding: 0 12px;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(15, 76, 129, 0.08);
+      cursor: pointer;
+    }
+
+    .menu-toggle:focus-visible,
+    .lang-btn:focus-visible,
+    .btn:focus-visible,
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .nav-links a {
+      white-space: nowrap;
+    }
+
+    .paper, .patent, .meta div, .timeline-item, .card, .hero-card, .highlight-box {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .brand, .paper-title, .patent-no {
+      overflow-wrap: anywhere;
+    }
+
+    .footer span[data-lang] {
+      display: none;
+    }
+    html[data-current-lang="en"] .footer span[data-lang="en"],
+    html[data-current-lang="zh"] .footer span[data-lang="zh"] {
+      display: inline;
+    }
+
     @media (max-width: 920px) {
       .hero-grid, .grid-2 { grid-template-columns: 1fr; }
-      .hero { padding-top: 36px; }
+      .hero { padding-top: 40px; }
       .columns { columns: 1; }
     }
 
-    @media (max-width: 768px) {
-      html { scroll-padding-top: 84px; }
-
+    @media (max-width: 760px) {
       .topbar {
-        backdrop-filter: blur(10px);
+        padding-top: env(safe-area-inset-top, 0);
       }
 
       .nav {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
+        align-items: stretch;
+        flex-direction: column;
         gap: 12px;
-        padding: 12px 0;
       }
 
-      .brand {
-        font-size: 16px;
-        line-height: 1.2;
-        white-space: normal;
-        padding-right: 8px;
-      }
-
-      .nav-toggle {
+      .menu-toggle {
         display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .nav-links {
-        grid-column: 1 / -1;
         display: none;
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
-        padding: 14px 0 4px;
+        gap: 8px;
+        background: rgba(255,255,255,0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 12px;
+        box-shadow: var(--shadow);
       }
 
-      .topbar.is-open .nav-links {
+      .nav-links.open {
         display: flex;
+      }
+
+      .nav-links a,
+      .lang-switch {
+        width: 100%;
       }
 
       .nav-links a {
         display: block;
-        padding: 11px 14px;
-        border: 1px solid var(--line);
+        padding: 12px 14px;
         border-radius: 12px;
-        background: rgba(255,255,255,0.95);
-        color: var(--primary);
-        font-weight: 600;
+        background: #f8fbff;
+        border: 1px solid #e3edf9;
       }
 
       .lang-switch {
-        width: 100%;
-        margin: 2px 0 0;
+        margin-left: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
 
       .lang-btn {
-        flex: 1;
-        padding: 10px 12px;
+        min-height: 44px;
       }
 
       .hero {
-        padding: 24px 0 20px;
+        padding: 24px 0 18px;
       }
 
-      .hero-grid {
-        gap: 16px;
-      }
-
-      .hero-card, .card, .profile-card, .timeline-item, .highlight-box {
-        border-radius: 18px;
-      }
-
-      .hero-card {
-        padding: 22px;
-      }
-
-      .profile-card {
-        padding: 22px;
-      }
-
-      .hero h1 {
-        font-size: clamp(28px, 9vw, 38px);
-        margin-bottom: 10px;
-      }
-
-      .hero h2 {
-        font-size: 18px;
-        line-height: 1.45;
-        margin-bottom: 14px;
-      }
-
-      .lead {
-        font-size: 15px;
-        margin-bottom: 16px;
+      .hero-card, .profile-card, .card, .timeline-item {
+        border-radius: 20px;
       }
 
       .tag-list {
         gap: 8px;
-        margin: 16px 0 20px;
+        margin: 18px 0 22px;
       }
 
       .tag {
+        padding: 8px 12px;
         font-size: 13px;
-        padding: 7px 12px;
       }
 
       .actions {
         flex-direction: column;
-        gap: 10px;
       }
 
       .actions .btn {
         width: 100%;
+        min-height: 46px;
       }
 
       .profile-avatar {
@@ -513,132 +506,45 @@
         margin-bottom: 16px;
       }
 
-      .meta {
-        gap: 10px;
-        font-size: 14px;
-      }
-
-      section {
-        padding: 8px 0 16px;
+      .lead {
+        font-size: 16px;
       }
 
       .section-title {
         font-size: 24px;
-        margin-bottom: 14px;
-      }
-
-      .section-subtitle {
-        margin: -4px 0 16px;
-        font-size: 14px;
-      }
-
-      .card {
-        padding: 20px;
-      }
-
-      .card h3, .timeline-item h3 {
-        font-size: 18px;
-      }
-
-      .timeline {
-        gap: 14px;
-      }
-
-      .timeline-item {
-        padding: 18px 18px 18px 20px;
+        line-height: 1.25;
       }
 
       .timeline-item::before {
         top: 18px;
         bottom: 18px;
-        width: 4px;
-      }
-
-      .columns {
-        columns: 1;
-      }
-
-      .paper, .patent {
-        padding: 12px 14px;
-        font-size: 14px;
-        line-height: 1.65;
-      }
-
-      .highlight-box {
-        padding: 22px;
-      }
-
-      .highlight-box h3 {
-        font-size: 20px;
       }
     }
 
     @media (max-width: 480px) {
       .container { width: min(var(--max), calc(100% - 16px)); }
-
-      .nav {
-        padding: 10px 0;
-      }
-
-      .brand {
-        font-size: 15px;
-      }
-
-      .nav-links a {
-        padding: 10px 12px;
-        font-size: 14px;
-      }
-
-      .hero-card, .card, .profile-card, .timeline-item {
-        padding: 18px;
-      }
-
-      .hero h2 {
-        font-size: 17px;
-      }
-
-      .lead {
-        font-size: 14px;
-      }
-
-      .tag-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .tag {
-        text-align: center;
-        padding-inline: 10px;
-      }
-
-      .section-title {
-        font-size: 22px;
-      }
-
-      .card h3, .timeline-item h3 {
-        font-size: 17px;
-      }
-
-      .footer {
-        padding: 22px 0 34px;
-        font-size: 13px;
-      }
+      .hero-card, .card, .profile-card, .timeline-item, .highlight-box { padding: 18px; }
+      .nav { padding: 10px 0; }
+      .brand { font-size: 16px; }
+      .hero h1 { font-size: clamp(28px, 9vw, 38px); }
+      .hero h2 { font-size: 17px; }
+      .section-subtitle { margin-bottom: 16px; }
+      .list { padding-left: 18px; }
+      .footer { padding: 24px 0 34px; font-size: 13px; }
     }
+
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <div class="brand">Shiping Gu | 顾士平</div>
-      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-          <path d="M4 7h16M4 12h16M4 17h16" />
-        </svg>
-        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-          <path d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
-      <nav class="nav-links">
+      <div class="nav-header">
+        <div class="brand">Shiping Gu | 顾士平</div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          ☰
+        </button>
+      </div>
+      <nav class="nav-links" id="site-nav" aria-label="Primary">
         <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
         <a href="#achievements"><span data-lang="en">Achievements</span><span data-lang="zh">成就总览</span></a>
         <a href="#contributions"><span data-lang="en">Contributions</span><span data-lang="zh">核心贡献</span></a>
@@ -1165,66 +1071,62 @@
     </div>
   </footer>
 
+  
   <script>
     (function () {
       const html = document.documentElement;
-      const body = document.body;
-      const topbar = document.querySelector('.topbar');
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      const langButtons = document.querySelectorAll('.lang-btn');
-      const saved = localStorage.getItem('site-language');
-      const defaultLang = saved || 'en';
+      const buttons = document.querySelectorAll('.lang-btn');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
 
       function setLang(lang) {
         html.setAttribute('data-current-lang', lang);
         html.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-        localStorage.setItem('site-language', lang);
         document.title = lang === 'zh' ? '顾士平｜个人主页' : 'Shiping Gu | Personal Website';
       }
 
       function closeMenu() {
-        if (!topbar || !navToggle) return;
-        topbar.classList.remove('is-open');
-        body.classList.remove('menu-open');
-        navToggle.setAttribute('aria-expanded', 'false');
+        if (!nav || !menuToggle) return;
+        nav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
       }
 
       function toggleMenu() {
-        if (!topbar || !navToggle) return;
-        const willOpen = !topbar.classList.contains('is-open');
-        topbar.classList.toggle('is-open', willOpen);
-        body.classList.toggle('menu-open', willOpen && window.innerWidth <= 768);
-        navToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        if (!nav || !menuToggle) return;
+        const isOpen = nav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        menuToggle.textContent = isOpen ? '✕' : '☰';
       }
 
-      langButtons.forEach(btn => {
+      buttons.forEach(btn => {
         btn.addEventListener('click', function () {
           setLang(this.getAttribute('data-set-lang'));
+          if (window.innerWidth <= 760) closeMenu();
         });
       });
 
-      if (navToggle) {
-        navToggle.addEventListener('click', toggleMenu);
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
       }
 
-      if (navLinks) {
-        navLinks.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', closeMenu);
+      if (nav) {
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function () {
+            if (window.innerWidth <= 760) closeMenu();
+          });
         });
       }
 
       window.addEventListener('resize', function () {
-        if (window.innerWidth > 768) {
-          body.classList.remove('menu-open');
-          if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-          if (topbar) topbar.classList.remove('is-open');
-        }
+        if (window.innerWidth > 760) closeMenu();
       });
 
-      setLang(defaultLang);
+      // Always open in English by default.
+      setLang('en');
       closeMenu();
     })();
   </script>
+
 </body>
 </html>
