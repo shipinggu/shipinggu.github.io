@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Shiping Gu | Personal Website</title>
+  <meta name="description" content="Personal website of Shiping Gu: Structural-State Mathematics, Optical Fiber Chemistry, Artificial Intelligence, energy storage and carbon sequestration, triple-play convergence, Internet of Vehicles, and other interdisciplinary innovations." />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #0f4c81;
+      --accent: #1f7ae0;
+      --line: #dbe3ee;
+      --soft: #eef4fb;
+      --shadow: 0 10px 30px rgba(15, 76, 129, 0.08);
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fbff 0%, #f4f6fa 100%);
+      line-height: 1.75;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    body.menu-open { overflow: hidden; }
+
+    main {
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
+      border-bottom: 1px solid rgba(219, 227, 238, 0.9);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15, 76, 129, 0.08);
+      flex-shrink: 0;
+    }
+
+    .nav-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .nav-toggle .icon-close { display: none; }
+    .topbar.is-open .nav-toggle .icon-menu { display: none; }
+    .topbar.is-open .nav-toggle .icon-close { display: block; }
+
+    .lang-switch {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      margin-left: 6px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 7px 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card { padding: 36px; }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      color: var(--primary);
+    }
+
+    .hero h2 {
+      margin: 0 0 18px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #244e73;
+    }
+
+    .lead {
+      font-size: 17px;
+      color: #334155;
+      margin-bottom: 22px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 26px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid #d4e3f6;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .paper, .patent, .meta div, .timeline-item, .card, .hero-card {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid var(--primary);
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn.secondary {
+      color: var(--primary);
+      background: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .profile-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #0f4c81, #3a8dde);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 24px rgba(31, 122, 224, 0.22);
+    }
+
+    .meta {
+      display: grid;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    .meta div {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #f8fbff;
+      border: 1px solid #e3edf9;
+    }
+
+    .meta strong { color: var(--primary); }
+
+    section { padding: 12px 0 22px; }
+
+    .section-title {
+      font-size: 28px;
+      margin: 0 0 18px;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: -6px 0 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card { padding: 26px; }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #173f66;
+      font-size: 20px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .list li { margin: 8px 0; }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 20px 22px 20px 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 5px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 10px;
+      color: var(--primary);
+      font-size: 22px;
+    }
+
+    .timeline-item p { margin: 0; }
+
+    .paper-list, .patent-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .paper, .patent {
+      padding: 14px 16px;
+      border: 1px solid #e3ebf4;
+      border-radius: 16px;
+      background: #fbfdff;
+    }
+
+    .paper-title, .patent-no {
+      font-weight: 700;
+      color: #123f6e;
+    }
+
+    .columns {
+      columns: 2 320px;
+      column-gap: 22px;
+    }
+
+    .columns .patent {
+      break-inside: avoid;
+      margin-bottom: 12px;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #0f4c81 0%, #1f7ae0 100%);
+      color: #fff;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-box h3 { margin-top: 0; font-size: 24px; }
+    .highlight-box p { margin-bottom: 0; opacity: 0.96; }
+
+    .footer {
+      margin-top: 28px;
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    [data-lang] { display: none; }
+    html[data-current-lang="en"] [data-lang="en"] { display: inline; }
+    html[data-current-lang="zh"] [data-lang="zh"] { display: inline; }
+    html[data-current-lang="en"] p[data-lang="en"],
+    html[data-current-lang="zh"] p[data-lang="zh"],
+    html[data-current-lang="en"] div[data-lang="en"],
+    html[data-current-lang="zh"] div[data-lang="zh"],
+    html[data-current-lang="en"] h2[data-lang="en"],
+    html[data-current-lang="zh"] h2[data-lang="zh"],
+    html[data-current-lang="en"] li[data-lang="en"],
+    html[data-current-lang="zh"] li[data-lang="zh"],
+    html[data-current-lang="en"] span.block[data-lang="en"],
+    html[data-current-lang="zh"] span.block[data-lang="zh"] {
+      display: block;
+    }
+    html[data-current-lang="en"] .lang-btn[data-set-lang="en"],
+    html[data-current-lang="zh"] .lang-btn[data-set-lang="zh"] {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 36px; }
+      .columns { columns: 1; }
+    }
+
+    @media (max-width: 768px) {
+      html { scroll-padding-top: 84px; }
+
+      .topbar {
+        backdrop-filter: blur(10px);
+      }
+
+      .nav {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+      }
+
+      .brand {
+        font-size: 16px;
+        line-height: 1.2;
+        white-space: normal;
+        padding-right: 8px;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        grid-column: 1 / -1;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 14px 0 4px;
+      }
+
+      .topbar.is-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 11px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.95);
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .lang-switch {
+        width: 100%;
+        margin: 2px 0 0;
+      }
+
+      .lang-btn {
+        flex: 1;
+        padding: 10px 12px;
+      }
+
+      .hero {
+        padding: 24px 0 20px;
+      }
+
+      .hero-grid {
+        gap: 16px;
+      }
+
+      .hero-card, .card, .profile-card, .timeline-item, .highlight-box {
+        border-radius: 18px;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .profile-card {
+        padding: 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(28px, 9vw, 38px);
+        margin-bottom: 10px;
+      }
+
+      .hero h2 {
+        font-size: 18px;
+        line-height: 1.45;
+        margin-bottom: 14px;
+      }
+
+      .lead {
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
+
+      .tag-list {
+        gap: 8px;
+        margin: 16px 0 20px;
+      }
+
+      .tag {
+        font-size: 13px;
+        padding: 7px 12px;
+      }
+
+      .actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .profile-avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        font-size: 26px;
+        margin-bottom: 16px;
+      }
+
+      .meta {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      section {
+        padding: 8px 0 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 14px;
+      }
+
+      .section-subtitle {
+        margin: -4px 0 16px;
+        font-size: 14px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card h3, .timeline-item h3 {
+        font-size: 18px;
+      }
+
+      .timeline {
+        gap: 14px;
+      }
+
+      .timeline-item {
+        padding: 18px 18px 18px 20px;
+      }
+
+      .timeline-item::before {
+        top: 18px;
+        bottom: 18px;
+        width: 4px;
+      }
+
+      .columns {
+        columns: 1;
+      }
+
+      .paper, .patent {
+        padding: 12px 14px;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .highlight-box {
+        padding: 22px;
+      }
+
+      .highlight-box h3 {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container { width: min(var(--max), calc(100% - 16px)); }
+
+      .nav {
+        padding: 10px 0;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .hero-card, .card, .profile-card, .timeline-item {
+        padding: 18px;
+      }
+
+      .hero h2 {
+        font-size: 17px;
+      }
+
+      .lead {
+        font-size: 14px;
+      }
+
+      .tag-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tag {
+        text-align: center;
+        padding-inline: 10px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .card h3, .timeline-item h3 {
+        font-size: 17px;
+      }
+
+      .footer {
+        padding: 22px 0 34px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">Shiping Gu | 顾士平</div>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <nav class="nav-links">
+        <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
+        <a href="#achievements"><span data-lang="en">Achievements</span><span data-lang="zh">成就总览</span></a>
+        <a href="#contributions"><span data-lang="en">Contributions</span><span data-lang="zh">核心贡献</span></a>
+        <a href="#research"><span data-lang="en">Research</span><span data-lang="zh">原创研究</span></a>
+        <a href="#publications"><span data-lang="en">Papers</span><span data-lang="zh">论文</span></a>
+        <a href="#patents"><span data-lang="en">Patents</span><span data-lang="zh">专利</span></a>
+        <a href="#other-directions"><span data-lang="en">Other Directions</span><span data-lang="zh">其它方向</span></a>
+        <a href="#industry"><span data-lang="en">Industry</span><span data-lang="zh">产业技术</span></a>
+        <a href="#honors"><span data-lang="en">Honors</span><span data-lang="zh">荣誉</span></a>
+        <span class="lang-switch">
+          <button class="lang-btn" data-set-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <h1>Shiping Gu</h1>
+          <h2 data-lang="en">Senior Engineer | Interdisciplinary Systems Scientist | Strategic Inventor</h2>
+          <h2 data-lang="zh">高级工程师｜跨学科系统科学家｜战略发明人</h2>
+          <p class="lead" data-lang="en">Shiping Gu is engaged in original theoretical and engineering innovation across Structural-State Mathematics, Structural-State Mathematical Economics, Optical Fiber Chemistry, Artificial Intelligence, energy storage and carbon sequestration, new energy cycles, communication networks, triple-play convergence, and the Internet of Vehicles.</p>
+          <p class="lead" data-lang="zh">顾士平长期从事原创性理论与工程技术创新，研究方向涵盖结构态数学、结构态数学经济学、光纤化学、人工智能、储能与碳封存、新能源循环、通信网络、三网融合与车联网等领域。</p>
+          <div class="tag-list">
+            <a class="tag" href="#research"><span data-lang="en">Structural-State Mathematics</span><span data-lang="zh">结构态数学</span></a>
+            <a class="tag" href="#research"><span data-lang="en">Optical Fiber Chemistry</span><span data-lang="zh">光纤化学</span></a>
+            <a class="tag" href="#other-directions"><span data-lang="en">Artificial Intelligence</span><span data-lang="zh">人工智能</span></a>
+            <a class="tag" href="#patents"><span data-lang="en">Energy Storage & Carbon Sequestration</span><span data-lang="zh">储能与碳封存</span></a>
+            <a class="tag" href="#industry"><span data-lang="en">Triple-Play Convergence</span><span data-lang="zh">三网融合</span></a>
+            <a class="tag" href="#industry"><span data-lang="en">Internet of Vehicles</span><span data-lang="zh">车联网</span></a>
+          </div>
+          <div class="actions">
+            <a class="btn secondary" href="https://orcid.org/0009-0006-7719-8192" target="_blank">ORCID</a>
+            <a class="btn primary" href="#research"><span data-lang="en">View Research</span><span data-lang="zh">查看研究成果</span></a>
+            <a class="btn secondary" href="#patents"><span data-lang="en">View Patents</span><span data-lang="zh">查看专利体系</span></a>
+          </div>
+        </div>
+
+        <aside class="hero-card profile-card">
+          <div>
+            <div class="profile-avatar">顾</div>
+            <div class="meta">
+              <div><strong><span data-lang="en">Role:</span><span data-lang="zh">身份：</span></strong> <span data-lang="en">Senior Engineer / Interdisciplinary Systems Scientist / Strategic Inventor</span><span data-lang="zh">高级工程师 / 跨学科系统科学家 / 战略发明人</span></div>
+              <div><strong><span data-lang="en">Degree:</span><span data-lang="zh">学位：</span></strong> <span data-lang="en">Master’s Degree, Tsinghua University</span><span data-lang="zh">清华大学硕士</span></div>
+              <div><strong><span data-lang="en">Memberships:</span><span data-lang="zh">会员：</span></strong> <span data-lang="en">CCF Premium Member; IEEE Computer Society Member</span><span data-lang="zh">CCF 高级会员（Premium Member）；IEEE Computer Society 会员</span></div>
+              <div><strong>ORCID:</strong> <a href="https://orcid.org/0009-0006-7719-8192" target="_blank">0009-0006-7719-8192</a></div>
+              <div><strong><span data-lang="en">Focus:</span><span data-lang="zh">方向：</span></strong> <span data-lang="en">Original theory, system architecture, key inventions, engineering implementation</span><span data-lang="zh">原创理论、系统架构、关键发明、工程落地</span></div>
+              <div><strong><span data-lang="en">Mission:</span><span data-lang="zh">宗旨：</span></strong> <span data-lang="en">To seek neither fame nor profit, but only to make a real contribution to humanity.</span><span data-lang="zh">不求名利，只求对人类有真正的贡献！</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">About</span><span data-lang="zh">个人定位</span></h2>
+        <p class="section-subtitle" data-lang="en">A researcher and inventor dedicated to building a full innovation chain from original theory to engineering systems and industrial application.</p>
+        <p class="section-subtitle" data-lang="zh">研究者、发明人，长期推动从新理论提出到工程系统落地的完整创新链建设。</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3><span data-lang="en">Academic and Technical Characteristics</span><span data-lang="zh">学术与技术特征</span></h3>
+            <p data-lang="en">His work is characterized by originality, system leadership, and engineering implementation. Across multiple fields, he demonstrates the distinctive profile of a founder, lead architect, and key inventor.</p>
+            <p data-lang="zh">顾士平的学术与技术工作突出体现为：坚持原创提出、系统主导和工程落地并重，在多个领域同时具备首创者、主导者、关键发明人的鲜明特征。</p>
+            <p data-lang="en">His work spans the full process from foundational theory and system architecture to key technologies, engineering realization, and industrial deployment.</p>
+            <p data-lang="zh">其工作贯穿基础理论、系统架构、关键技术、工程实现与产业应用全过程，致力于推动跨学科创新的体系化发展。</p>
+          </div>
+          <div class="card">
+            <h3><span data-lang="en">Education and Professional Qualifications</span><span data-lang="zh">教育背景与专业资质</span></h3>
+            <p data-lang="en">He graduated from Tsinghua University with a master’s degree and is currently a Senior Engineer, a CCF Premium Member, and a member of the IEEE Computer Society.</p>
+            <p data-lang="zh">毕业于清华大学，获硕士学位。现为高级工程师、中国计算机学会（CCF）高级会员 / Premium Member、IEEE Computer Society 会员。</p>
+            <p data-lang="en">He has long been active at the intersection of mathematics, chemistry, energy, communication networks, intelligent transportation, and AI systems.</p>
+            <p data-lang="zh">长期活跃于数学、化学、能源、通信网络、智能交通与人工智能系统交叉领域，兼具基础理论创新能力与重大工程技术发明能力。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Complete List of Achievements</span><span data-lang="zh">成就总览</span></h2>
+        <p class="section-subtitle" data-lang="en">A bilingual overview of Shiping Gu’s major academic, technical, industrial, and honorary achievements.</p>
+        <p class="section-subtitle" data-lang="zh">以下内容按中英双语方式概括顾士平的主要学术、技术、产业与荣誉成就。</p>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3><span data-lang="en">1. Original Theoretical Contributions</span><span data-lang="zh">一、原创理论开创</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>Founded Structural-State Mathematics:</strong> proposed a structure-centered mathematical framework distinct from traditional variable-centered mathematics.</li>
+              <li data-lang="zh"><strong>开创结构态数学方向：</strong>提出“结构态数学（Structural-State Mathematics）”，尝试建立区别于传统变量中心数学的新型结构中心数学框架。</li>
+              <li data-lang="en"><strong>Developed Structural-State Mathematical Economics:</strong> extended the structural-state framework to economics and complex systems.</li>
+              <li data-lang="zh"><strong>发展结构态数学经济学：</strong>将结构态方法扩展到经济系统与复杂系统研究，形成“结构态数学经济学（Structural-State Mathematical Economics）”。</li>
+              <li data-lang="en"><strong>Advanced complex systems research:</strong> proposed systematic approaches to structure formation, coupling, state evolution, and system mechanisms.</li>
+              <li data-lang="zh"><strong>推动复杂系统结构研究：</strong>围绕结构形成、结构耦合、状态演化与系统机制提出系统性研究思路。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">2. Original Scholarly Publications</span><span data-lang="zh">二、原创学术论文成果</span></h3>
+            <ul class="list">
+              <li><strong>Structural-State Mathematical Economics</strong> (DOI: 10.2139/ssrn.6189159)</li>
+              <li><strong>Structural-State Mathematics</strong> (DOI: 10.2139/ssrn.6140811)</li>
+              <li><strong>Optical Fiber Chemistry and Theory</strong> (DOI: 10.2139/ssrn.5292806)</li>
+              <li><strong>Optical Fiber Chemistry and the Artificial Intelligence Platform</strong> (DOI: 10.26434/chemrxiv-2025-dg30l)</li>
+              <li><strong>Optical Fiber Chemical Catalysis</strong> (DOI: 10.26434/chemrxiv-2026-tqklf)</li>
+              <li><strong>The Theory of Artificial Intelligence Innovation</strong> (DOI: 10.2139/ssrn.5415854)</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">3. Achievements in Optical Fiber Chemistry and Artificial Intelligence</span><span data-lang="zh">三、光纤化学与人工智能成就</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>Founded Optical Fiber Chemistry:</strong> initiated and continuously advanced the field since 2014.</li>
+              <li data-lang="zh"><strong>开创光纤化学方向：</strong>自2014年起提出并持续推进“光纤化学（Optical Fiber Chemistry）”方向。</li>
+              <li data-lang="en"><strong>Proposed an Artificial Intelligence Platform:</strong> promoted the integration of optical fiber chemistry, AI, programmable chemistry, and agent systems.</li>
+              <li data-lang="zh"><strong>提出人工智能平台构想：</strong>推动光纤化学、人工智能、可编程化学和智能体系统深度融合。</li>
+              <li data-lang="en"><strong>Built a complete innovation route:</strong> covering fiber structure, photon transport, interfacial catalysis, photoelectric coupling, programmable control, and programmable systems.</li>
+              <li data-lang="zh"><strong>完成系统路线设计：</strong>围绕光纤结构、光子传输、界面催化、光电耦合、可编程控制等建立完整创新路线。</li>
+              <li data-lang="en"><strong>Established a key patent portfolio:</strong> spanning optical fiber chemistry, AI chemistry, fuel cell stacks, ammonia synthesis, and programmable chemistry systems.</li>
+              <li data-lang="zh"><strong>形成关键专利群：</strong>在光纤化学、AI 化学、燃料电池堆、合成氨、可编程化学系统等方面形成系统专利布局。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">4. Patent and Invention Achievements</span><span data-lang="zh">四、专利与发明成就</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>16 patents in optical fiber chemistry and related areas</strong>, including integrated photonic-electronic chemistry, AI chemistry, fourth-generation catalysis systems, ambient-condition ammonia synthesis, and precious-metal-free fuel cells.</li>
+              <li data-lang="zh"><strong>光纤化学及相关方向专利 16 项</strong>：涵盖光纤化学、集成光子电子化学、人工智能、第四代催化系统、常温常压合成氨、无需贵金属催化剂燃料电池等。</li>
+              <li data-lang="en"><strong>18 representative patents in triple-play convergence</strong>, covering EoC, digital home terminals, trusted networking, dynamic timeslot allocation, and reconfigurable processors.</li>
+              <li data-lang="zh"><strong>三网融合代表性专利 18 项</strong>：涵盖 EoC、数字家庭终端、可信网络、动态时隙分配、可重构处理器等。</li>
+              <li data-lang="en"><strong>43 representative patents in the Internet of Vehicles</strong>, covering vehicle identification, dynamic weighing, driver behavior monitoring, remote locking, cloud communication, and inspection systems.</li>
+              <li data-lang="zh"><strong>车联网代表性专利 43 项</strong>：涵盖车辆识别、动态载重、司机行为监测、远程锁车、云通信、稽查系统等。</li>
+              <li data-lang="en"><strong>Additional achievements in microscopy, terahertz products, and AI hardware innovation</strong> further expand the breadth of his invention portfolio.</li>
+              <li data-lang="zh"><strong>在显微镜、太赫兹产品与人工智能硬件创新方面的成果</strong>，进一步拓展了其发明体系的广度。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">5. Achievements in Triple-Play Convergence</span><span data-lang="zh">五、三网融合成就</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>Played an early and leading role</strong> in developing key technologies for China’s triple-play convergence.</li>
+              <li data-lang="zh"><strong>较早参与并主导中国三网融合关键技术研发</strong>。</li>
+              <li data-lang="en"><strong>Led product invention and R&D</strong> at Hangzhou Chuling Information Technology Co., Ltd.</li>
+              <li data-lang="zh"><strong>主持产品发明与研发</strong>：在杭州初灵信息技术股份有限公司主持相关产品和系统研发。</li>
+              <li data-lang="en"><strong>Produced representative papers</strong> on Android multi-screen interaction, EoC, NGB access networks, and digital home terminals.</li>
+              <li data-lang="zh"><strong>形成代表性论文</strong>：涉及 Android 多屏互动、EoC、NGB 接入网、数字家庭智能终端等。</li>
+              <li data-lang="en"><strong>Helped lay the industrial foundation</strong> for EoC, NGB, and trusted coaxial cable convergence systems.</li>
+              <li data-lang="zh"><strong>奠定产业技术基础</strong>：为 EoC、NGB、可信同轴电缆融合系统等技术路线和应用体系奠定重要基础。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">6. Achievements in the Internet of Vehicles</span><span data-lang="zh">六、车联网成就</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>Led product invention and R&D</strong> in the Internet of Vehicles at Hangzhou HopeChart IoT Technology Co., Ltd.</li>
+              <li data-lang="zh"><strong>主持车联网产品发明与研发</strong>：在杭州鸿泉物联技术股份有限公司持续推进系统创新。</li>
+              <li data-lang="en"><strong>Built a comprehensive industry application technology system</strong> covering vehicle identification, lawful operation identification, dynamic weighing, dump truck supervision, safety and energy saving, cloud platforms, and traffic inspection.</li>
+              <li data-lang="zh"><strong>形成完整行业应用技术体系</strong>：覆盖车辆识别、合法运营识别、动态载重、渣土车监管、安全节能、云平台和交通稽查等。</li>
+              <li data-lang="en"><strong>Established a continuous innovation chain</strong> in supervision, safety, energy saving, communication, remote control, and big-data applications.</li>
+              <li data-lang="zh"><strong>完成连续创新链布局</strong>：在监管、安全、节能、通信、远程控制与大数据应用等方向持续创新。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">7. Scholarly and Engineering Style</span><span data-lang="zh">七、学术与工程风格成就</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>Strong originality:</strong> continuously proposed new concepts, architectures, and systems.</li>
+              <li data-lang="zh"><strong>原创性强：</strong>持续提出新概念、新架构、新系统。</li>
+              <li data-lang="en"><strong>Strong leadership:</strong> consistently led overall solution design and system R&D.</li>
+              <li data-lang="zh"><strong>主导性强：</strong>长期担任总体方案设计和系统研发主导角色。</li>
+              <li data-lang="en"><strong>Strong engineering execution:</strong> translated achievements into products, systems, and practical applications.</li>
+              <li data-lang="zh"><strong>工程落地能力强：</strong>推动成果向产品、系统和应用场景转化。</li>
+              <li data-lang="en"><strong>Strong interdisciplinary integration:</strong> worked across mathematics, chemistry, energy, communication networks, AI, and intelligent transportation.</li>
+              <li data-lang="zh"><strong>跨学科整合能力强：</strong>长期横跨数学、化学、能源、通信网络、人工智能和智能交通等领域。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item" id="honors">
+            <h3><span data-lang="en">8. Honors and Awards</span><span data-lang="zh">八、荣誉与奖励</span></h3>
+            <ul class="list">
+              <li data-lang="en"><strong>Jiangsu Provincial Science and Technology Progress Award</strong></li>
+              <li data-lang="zh"><strong>江苏省科学技术进步奖</strong></li>
+              <li data-lang="en"><strong>Zhejiang Provincial Radio and Television Science and Technology Innovation Award</strong></li>
+              <li data-lang="zh"><strong>浙江省广播电视科学技术创新奖</strong></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contributions">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Core Contributions</span><span data-lang="zh">核心贡献概述</span></h2>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3><span data-lang="en">Founded Structural-State Mathematics</span><span data-lang="zh">开创“结构态数学”方向</span></h3>
+            <p data-lang="en">He proposed Structural-State Mathematics as a structure-centered mathematical framework for describing structures, relationships, states, and evolution in complex systems, and further developed Structural-State Mathematical Economics.</p>
+            <p data-lang="zh">提出结构态数学（Structural-State Mathematics）方向，尝试建立区别于传统变量中心数学的新型结构中心数学框架，用于描述复杂系统中的结构、关系、状态及其演化规律，并进一步发展出结构态数学经济学。</p>
+          </article>
+          <article class="timeline-item">
+            <h3><span data-lang="en">Founded Optical Fiber Chemistry and the Artificial Intelligence Platform</span><span data-lang="zh">开创“光纤化学”与“人工智能平台”方向</span></h3>
+            <p data-lang="en">Since 2014, he has systematically advanced the theoretical and engineering system of Optical Fiber Chemistry and the Artificial Intelligence Platform as an original proposer, chief architect, and key inventor.</p>
+            <p data-lang="zh">自2014年起，系统推进“光纤化学—人工智能平台”的理论与工程体系建设，是该方向的重要原创提出者、总体架构主导者和关键发明人。</p>
+          </article>
+          <article class="timeline-item">
+            <h3><span data-lang="en">Laid the Technological Foundation for Triple-Play Convergence</span><span data-lang="zh">奠基开创“三网融合”核心技术体系</span></h3>
+            <p data-lang="en">He played an early and leading role in China’s triple-play convergence, producing systematic original achievements in EoC, NGB access networks, digital home terminals, multi-screen interaction, and trusted coaxial convergence systems.</p>
+            <p data-lang="zh">较早参与并主导中国“三网融合”关键技术与产品研发，在 EoC、NGB 接入网、数字家庭智能终端、多屏互动、可信同轴电缆融合系统等方向形成系统性原创成果。</p>
+          </article>
+          <article class="timeline-item">
+            <h3><span data-lang="en">Laid the Industry Application Framework for the Internet of Vehicles</span><span data-lang="zh">奠基开创“车联网”行业应用技术体系</span></h3>
+            <p data-lang="en">He has long led original system innovation in vehicle identification, dynamic weighing, intelligent supervision, cloud communication, driver behavior analysis, remote control, smart operations, and traffic inspection.</p>
+            <p data-lang="zh">长期主持车联网产品发明与研发，在车辆识别、动态载重、智能监管、云通信、驾驶行为分析、远程控制、智慧运营、交通稽查等方向持续进行原创系统创新。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Original Research</span><span data-lang="zh">原创理论与学术开创</span></h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Structural-State Mathematics</h3>
+            <p data-lang="en">Shiping Gu founded Structural-State Mathematics as a structure-centered system distinct from traditional variable-centered mathematics, focusing on structure formation, structural coupling, state changes, and evolution in complex systems.</p>
+            <p data-lang="zh">顾士平开创提出结构态数学，尝试建立一种不同于传统变量中心数学的结构中心数学体系，以结构为基本分析对象，研究复杂系统中结构形成、结构耦合、状态变化和演化机制。</p>
+            <p data-lang="en">On this basis, he further developed Structural-State Mathematical Economics to characterize state transitions and structural evolution in economic and complex systems.</p>
+            <p data-lang="zh">在此基础上，进一步提出并发展结构态数学经济学，将结构态方法用于刻画经济系统与复杂系统中的状态转换和结构演化规律。</p>
+            <div class="paper-list">
+              <div class="paper"><div class="paper-title">Structural-State Mathematical Economics</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.6189159" target="_blank">10.2139/ssrn.6189159</a></div></div>
+              <div class="paper"><div class="paper-title">Structural-State Mathematics</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.6140811" target="_blank">10.2139/ssrn.6140811</a></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3><span data-lang="en">Optical Fiber Chemistry and the Artificial Intelligence Platform</span><span data-lang="zh">光纤化学与人工智能平台</span></h3>
+            <p data-lang="en">Since 2014, he has systematically advanced a complete innovation route from theory and methodology to device architecture around fiber structure, photon transport, interfacial catalysis, photoelectric coupling, programmable control, and AI collaboration.</p>
+            <p data-lang="zh">自2014年起，围绕光纤结构、光子传输、界面催化、光电耦合、可编程控制与人工智能协同，系统推进从理论原理、系统方法到装置架构的完整创新。</p>
+            <p data-lang="en">He further proposed and promoted the Artificial Intelligence Platform, integrating optical fiber chemistry with AI, programmable chemistry, agent systems, and chemical engineering platforms.</p>
+            <p data-lang="zh">在此基础上，进一步提出并推进人工智能平台的系统构想，推动光纤化学与人工智能、可编程化学、智能体系统和化学工程平台深度融合。</p>
+            <div class="paper-list">
+              <div class="paper"><div class="paper-title">Optical Fiber Chemistry and Theory</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.5292806" target="_blank">10.2139/ssrn.5292806</a></div></div>
+              <div class="paper"><div class="paper-title">Optical Fiber Chemistry and the Artificial Intelligence Platform</div><div>DOI: <a href="https://doi.org/10.26434/chemrxiv-2025-dg30l" target="_blank">10.26434/chemrxiv-2025-dg30l</a></div></div>
+              <div class="paper"><div class="paper-title">Optical Fiber Chemical Catalysis</div><div>DOI: <a href="https://doi.org/10.26434/chemrxiv-2026-tqklf" target="_blank">10.26434/chemrxiv-2026-tqklf</a></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Complete List of Papers</span><span data-lang="zh">完整论文清单</span></h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><span data-lang="en">Original Research Papers</span><span data-lang="zh">原创研究论文</span></h3>
+            <div class="paper-list">
+              <div class="paper"><div class="paper-title">Structural-State Mathematical Economics</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.6189159" target="_blank">10.2139/ssrn.6189159</a></div></div>
+              <div class="paper"><div class="paper-title">Structural-State Mathematics</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.6140811" target="_blank">10.2139/ssrn.6140811</a></div></div>
+              <div class="paper"><div class="paper-title">Optical Fiber Chemistry and Theory</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.5292806" target="_blank">10.2139/ssrn.5292806</a></div></div>
+              <div class="paper"><div class="paper-title">Optical Fiber Chemistry and the Artificial Intelligence Platform</div><div>DOI: <a href="https://doi.org/10.26434/chemrxiv-2025-dg30l" target="_blank">10.26434/chemrxiv-2025-dg30l</a></div></div>
+              <div class="paper"><div class="paper-title">Optical Fiber Chemical Catalysis</div><div>DOI: <a href="https://doi.org/10.26434/chemrxiv-2026-tqklf" target="_blank">10.26434/chemrxiv-2026-tqklf</a></div></div>
+              <div class="paper"><div class="paper-title">The Theory of Artificial Intelligence Innovation</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.5415854" target="_blank">10.2139/ssrn.5415854</a></div></div>
+              <div class="paper"><div class="paper-title">Forecast of Compute Platform Development</div><div>DOI: <a href="https://doi.org/10.2139/ssrn.5714822" target="_blank">10.2139/ssrn.5714822</a></div></div>
+              <div class="paper"><div class="paper-title">Dynamic Reconfigurable Instruction Computer</div><div><span data-lang="en">Journal: Computer Era, 2008 Issue 03</span><span data-lang="zh">期刊：《计算机时代》2008年03期</span></div></div>
+              <div class="paper"><div class="paper-title">SOC/IP-Based Intelligent Power System</div><div><span data-lang="en">Journal: Journal of Electric Power Systems and Automation, 2002 Issue 08</span><span data-lang="zh">期刊：《电力系统及其自动化学报》2002年08期</span></div></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3><span data-lang="en">Representative Triple-Play Papers</span><span data-lang="zh">三网融合代表性论文</span></h3>
+            <div class="paper-list">
+              <div class="paper"><div class="paper-title"><span data-lang="en">Triple-Play Convergence Remote Controller Based on Android Multi-Screen Interaction</span><span data-lang="zh">基于Android多屏互动的三网融合遥控器</span></div><div><span data-lang="en">Journal: Video Engineering, 2012 Issue 04</span><span data-lang="zh">期刊：《电视技术》，2012年第4期</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">Multi-Mode Application of the Next-Generation Broadcasting Network Based on EoC</span><span data-lang="zh">基于EoC的下一代广电网络多模式应用</span></div><div><span data-lang="en">Journal: China Cable Television, 2011 Issue 08</span><span data-lang="zh">期刊：《中国有线电视》，2011年第8期</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">Integrated Platform for NGB Access Network Equipment</span><span data-lang="zh">NGB接入网设备集成平台</span></div><div><span data-lang="en">Journal: Video Engineering, 2011 Issue 16</span><span data-lang="zh">期刊：《电视技术》，2011年第16期</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">AVS-Based Digital Home Intelligent Terminal for Triple-Play Convergence</span><span data-lang="zh">基于AVS面向三网融合的数字家庭智能终端</span></div><div><span data-lang="en">Journal: China Cable Television, 2011 Issue 03, Part 2</span><span data-lang="zh">期刊：《中国有线电视》，2011年第3期下</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">Next-Generation Broadcasting Network Based on Self-Organizing Multi-Frequency EoC Technology</span><span data-lang="zh">采用自组织多频EoC技术实现下一代广电网络</span></div><div><span data-lang="en">Journal: Video Engineering, 2010 Issue 02</span><span data-lang="zh">期刊：《电视技术》，2010年第2期</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">Layered Implementation Method for EoC Encoding and Decoding</span><span data-lang="zh">EoC编解码分层实现方法</span></div><div><span data-lang="en">Journal: China Cable Television, 2009 Issue 04</span><span data-lang="zh">期刊：《中国有线电视》，2009年第4期</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">Low-Cost, Low-Power Trusted Coaxial Cable Triple-Play System Based on SoC</span><span data-lang="zh">基于SoC低成本低功耗可信同轴电缆三网融合系统</span></div><div><span data-lang="en">Journal: Video Engineering, 2009 Issue 04</span><span data-lang="zh">期刊：《电视技术》，2009年第4期</span></div></div>
+              <div class="paper"><div class="paper-title"><span data-lang="en">Application of TDMA Dynamic Timeslot Allocation in EoC</span><span data-lang="zh">TDMA动态时隙分配在EoC上的应用</span></div><div><span data-lang="en">Journal: China Cable Television, 2009 Issue 01</span><span data-lang="zh">期刊：《中国有线电视》，2009年第1期</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="patents">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Complete List of Patents</span><span data-lang="zh">完整专利清单</span></h2>
+
+        <div class="card" style="margin-bottom:22px;">
+          <h3><span data-lang="en">Optical Fiber Chemistry and Related Fields</span><span data-lang="zh">光纤化学及相关方向</span></h3>
+          <div class="columns patent-list">
+            <div class="patent"><span class="patent-no">CN2016109917585</span>｜<span data-lang="en">Photocatalytic Effect Battery</span><span data-lang="zh">光催化效应电池</span></div>
+            <div class="patent"><span class="patent-no">CN2020103691488</span>｜<span data-lang="en">Energy Storage, Carbon Sequestration and New Energy Cycle</span><span data-lang="zh">储能、碳封存及新能源循环</span></div>
+            <div class="patent"><span class="patent-no">CN202410626839X</span>｜<span data-lang="en">Optical Fiber Chemistry</span><span data-lang="zh">光纤化学</span> · <a href="foc.pdf" target="_blank"><span data-lang="en">PDF File</span><span data-lang="zh">链接文件</span></a></div>
+            <div class="patent"><span class="patent-no">CN2024106289201</span>｜<span data-lang="en">Ambient-Condition Ammonia Synthesis</span><span data-lang="zh">常温常压合成氨</span></div>
+            <div class="patent"><span class="patent-no">CN2025104207076</span>｜<span data-lang="en">Optical Fiber Chemistry Fuel Cell Stack</span><span data-lang="zh">光纤化学燃料电池堆</span> · <a href="fofc.pdf" target="_blank"><span data-lang="en">PDF File</span><span data-lang="zh">链接文件</span></a></div>
+            <div class="patent"><span class="patent-no">CN2025104207095</span>｜<span data-lang="en">Optical Fiber Chemistry Electrochemical Synthesis or Electrolysis Stack</span><span data-lang="zh">光纤化学电化学合成或电解堆</span></div>
+            <div class="patent"><span class="patent-no">CN2025106781807</span>｜<span data-lang="en">Membrane Electrode Implementation Method for Optical Fiber Chemistry</span><span data-lang="zh">光纤化学膜电极实现方法</span></div>
+            <div class="patent"><span class="patent-no">CN2025107431919</span>｜<span data-lang="en">Integrated Photonic-Electronic Chemistry</span><span data-lang="zh">集成光子电子化学</span></div>
+            <div class="patent"><span class="patent-no">CN2025108827580</span>｜<span data-lang="en">Preparation Method for Integrated Photonic-Electronic Chemistry Membrane Electrode</span><span data-lang="zh">集成光子电子化学膜电极的制备方法</span></div>
+            <div class="patent"><span class="patent-no">CN2025109277304</span>｜<span data-lang="en">Photonic Crystal Optical Fiber Chemistry System</span><span data-lang="zh">光子晶体光纤化学系统</span></div>
+            <div class="patent"><span class="patent-no">CN2025109979203</span>｜<span data-lang="en">Programmable Chemistry System</span><span data-lang="zh">可编程化学系统</span></div>
+            <div class="patent"><span class="patent-no">CN2025110533867</span>｜<span data-lang="en">Artificial Intelligence</span><span data-lang="zh">人工智能</span></div>
+            <div class="patent"><span class="patent-no">CN2025111480481</span>｜<span data-lang="en">Fourth-Generation Catalytic Optical Fiber Chemistry and Artificial Intelligence System</span><span data-lang="zh">第四代催化光纤化学与人工智能系统</span></div>
+            <div class="patent"><span class="patent-no">CN2025112313217</span>｜<span data-lang="en">Method and Device for Ambient-Condition Optical Fiber Chemistry Ammonia Synthesis</span><span data-lang="zh">常温常压光纤化学合成氨的方法及装置</span></div>
+            <div class="patent"><span class="patent-no">CN202511278535X</span>｜<span data-lang="en">Precious-Metal-Free Optical Fiber Chemistry Fuel Cell</span><span data-lang="zh">无需贵金属催化剂的光纤化学燃料电池</span></div>
+            <div class="patent"><span class="patent-no">CN2025114465159</span>｜<span data-lang="en">Infrared, Visible, Ultraviolet Optical Fibers and Optical Fiber Chemistry Catalytic System</span><span data-lang="zh">红外、可见光、紫外光纤及光纤化学催化系统</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:22px;">
+          <h3><span data-lang="en">Other Directions and Early AI-Related Innovations</span><span data-lang="zh">其它方向与早期人工智能相关创新</span></h3>
+          <div class="columns patent-list">
+            <div class="patent"><span class="patent-no">CN2018100902013</span>｜<span data-lang="en">Synchronous Orthogonal Laser Image Reconstruction Super-Resolution Microscope</span><span data-lang="zh">同步正交激光图像重建超分辨率显微镜</span></div>
+            <div class="patent"><span class="patent-no">CN2017101223034</span>｜<span data-lang="en">Proton Microscope, Spectrometer, and Energy Spectrometer</span><span data-lang="zh">质子显微镜、波谱仪、能谱仪</span></div>
+            <div class="patent"><span class="patent-no">CN2018101528408</span>｜<span data-lang="en">Semiconductor Wireless Transmitting and Receiving Antenna</span><span data-lang="zh">半导体无线发射、接收天线</span></div>
+            <div class="patent"><span class="patent-no">2006101554274</span>｜<span data-lang="en">Programmable Instruction-Set Computer Integrated Circuit</span><span data-lang="zh">可编程指令集计算机集成电路</span></div>
+            <div class="patent"><span class="patent-no">2007100709605</span>｜<span data-lang="en">Dynamically Reconfigurable Instruction Processor Configuration and Communication Controller</span><span data-lang="zh">动态可重构指令处理器配置及通信控制器</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:22px;">
+          <h3><span data-lang="en">Representative Triple-Play Patents</span><span data-lang="zh">三网融合代表性专利</span></h3>
+          <div class="columns patent-list">
+            <div class="patent"><span class="patent-no">201010146284.7</span>｜<span data-lang="en">Digital Home Intelligent Terminal Device for Triple-Play Convergence Based on AVS</span><span data-lang="zh">基于AVS面向三网融合的数字家庭智能终端实现装置</span></div>
+            <div class="patent"><span class="patent-no">201020158255.8</span>｜<span data-lang="en">Multifunctional Digital Home Intelligent Terminal Device for Triple-Play Convergence</span><span data-lang="zh">多功能三网融合的数字家庭智能终端实现装置</span></div>
+            <div class="patent"><span class="patent-no">201020049390.9</span>｜<span data-lang="en">Network-Type Online Line Monitoring Device</span><span data-lang="zh">网络型线路在线监测实现装置</span></div>
+            <div class="patent"><span class="patent-no">200910101572.8</span>｜<span data-lang="en">Next-Generation Internet with Controllable, Manageable, Trustworthy, and Traceable Features</span><span data-lang="zh">可控、可管、可信、可回溯的下一代互联网</span></div>
+            <div class="patent"><span class="patent-no">200920191255.5</span>｜<span data-lang="en">Next-Generation Broadcasting Network with Controllable, Manageable, Trustworthy, and Traceable Features</span><span data-lang="zh">可控、可管、可信、可回溯的下一代广电网络</span></div>
+            <div class="patent"><span class="patent-no">200910099725.X</span>｜<span data-lang="en">Remote Data Acquisition and Control Gateway Based on 3G Communication</span><span data-lang="zh">基于3G通信远程数据采控网关</span></div>
+            <div class="patent"><span class="patent-no">200920122196.6</span>｜<span data-lang="en">Massive Real-Time Data Acquisition and Control Device Based on 3G Wireless Network</span><span data-lang="zh">基于3G无线网络海量实时数据采控装置</span></div>
+            <div class="patent"><span class="patent-no">200820088222.3</span>｜<span data-lang="en">Low-Cost, Low-Power Trusted Coaxial Cable Triple-Play System Based on SoC</span><span data-lang="zh">基于SOC低成本低功耗可信同轴电缆三网融合系统</span></div>
+            <div class="patent"><span class="patent-no">200810061994.2</span>｜<span data-lang="en">Dynamic Timeslot Allocation TDMA Device</span><span data-lang="zh">动态时隙分配TDMA实现装置</span></div>
+            <div class="patent"><span class="patent-no">200710070960.5</span>｜<span data-lang="en">Dynamically Reconfigurable Instruction Processor Configuration and Communication Controller</span><span data-lang="zh">动态可重构指令处理器配置及通信控制器</span></div>
+            <div class="patent"><span class="patent-no">200720113622.0</span>｜<span data-lang="en">High-Speed Trusted Network Processor</span><span data-lang="zh">高速可信网络处理器</span></div>
+            <div class="patent"><span class="patent-no">200720113621.6</span>｜<span data-lang="en">Configurable Integrated Circuit Communication Controller</span><span data-lang="zh">可编程集成电路配置通信控制器</span></div>
+            <div class="patent"><span class="patent-no">200710070481.3</span>｜<span data-lang="en">Dynamically Reconfigurable Instruction Computer Processor and Implementation Method</span><span data-lang="zh">动态可重构指令计算机处理器及实现方法</span></div>
+            <div class="patent"><span class="patent-no">200710069888.4</span>｜<span data-lang="en">Embedded Loop and Recursive Control Module in Programmable Integrated Circuits</span><span data-lang="zh">可编程集成电路中嵌入循环、递归控制模块</span></div>
+            <div class="patent"><span class="patent-no">200710069647.X</span>｜<span data-lang="en">CATV and Power-Line Integrated Hybrid Broadband Network</span><span data-lang="zh">CATV、电力线综合接入混合宽带网络</span></div>
+            <div class="patent"><span class="patent-no">200720110956.2</span>｜<span data-lang="en">Home Integrated Access Network Device</span><span data-lang="zh">家庭综合接入网络实现装置</span></div>
+            <div class="patent"><span class="patent-no">200710067300.1</span>｜<span data-lang="en">RF Tag System with OFDM Anti-Collision Detection</span><span data-lang="zh">基于正交频分复用反碰撞检测射频标签系统</span></div>
+            <div class="patent"><span class="patent-no">200610155427.4</span>｜<span data-lang="en">Programmable Instruction-Set Computer Integrated Circuit</span><span data-lang="zh">可编程指令集计算机集成电路</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><span data-lang="en">Representative Internet of Vehicles Patents</span><span data-lang="zh">车联网代表性专利</span></h3>
+          <div class="columns patent-list">
+            <div class="patent"><span class="patent-no">201610806016.0</span>｜<span data-lang="en">Illegal Taxi Identification System</span><span data-lang="zh">黑车识别系统</span></div>
+            <div class="patent"><span class="patent-no">201621041848.X</span>｜<span data-lang="en">Vehicle Legal Operation Identification Device</span><span data-lang="zh">车辆合法运营识别装置</span></div>
+            <div class="patent"><span class="patent-no">201610951991.0</span>｜<span data-lang="en">Dynamic Vehicle Load Measurement System</span><span data-lang="zh">车辆载重量动态测量系统</span></div>
+            <div class="patent"><span class="patent-no">201621195693.5</span>｜<span data-lang="en">Vehicle Load Measurement System Based on the Internet of Vehicles</span><span data-lang="zh">基于车联网的车辆载重量测量系统</span></div>
+            <div class="patent"><span class="patent-no">201610633413.2</span>｜<span data-lang="en">Dump Truck Pollution Warning System</span><span data-lang="zh">渣土车污染告警系统</span></div>
+            <div class="patent"><span class="patent-no">201620844727.2</span>｜<span data-lang="en">Dump Truck Dust Management System</span><span data-lang="zh">渣土车扬尘管理系统</span></div>
+            <div class="patent"><span class="patent-no">201610474266.9</span>｜<span data-lang="en">Driver Behavior Analysis Device for New Energy Vehicles</span><span data-lang="zh">新能源车司机驾驶行为分析实现装置</span></div>
+            <div class="patent"><span class="patent-no">201620643509.2</span>｜<span data-lang="en">Internet-of-Vehicles System for EV Safety and Energy Saving</span><span data-lang="zh">电动汽车安全与节能车联网系统</span></div>
+            <div class="patent"><span class="patent-no">201610085514.0</span>｜<span data-lang="en">Dump Truck Illegal Dumping Monitoring System</span><span data-lang="zh">渣土车乱抛监控系统</span></div>
+            <div class="patent"><span class="patent-no">201620120714.0</span>｜<span data-lang="en">Dump Truck Spillage Monitoring Device</span><span data-lang="zh">渣土车抛洒监测装置</span></div>
+            <div class="patent"><span class="patent-no">201510741960.8</span>｜<span data-lang="en">IoV Cloud Communication System</span><span data-lang="zh">车联网云通信系统</span></div>
+            <div class="patent"><span class="patent-no">201520878259.6</span>｜<span data-lang="en">Multi-Port Communication Device for Vehicle Terminal</span><span data-lang="zh">车载终端多端口通信实现装置</span></div>
+            <div class="patent"><span class="patent-no">201010586279.8</span>｜<span data-lang="en">Lane Matching Method and Device</span><span data-lang="zh">车线匹配方法及其装置</span></div>
+            <div class="patent"><span class="patent-no">201120063840.4</span>｜<span data-lang="en">Smart Bus Operation System Device Based on Cloud Computing Platform</span><span data-lang="zh">基于云计算平台的客车智慧运营系统实现装置</span></div>
+            <div class="patent"><span class="patent-no">201020050063.5</span>｜<span data-lang="en">Vehicle Remote Monitoring and Alarm Device</span><span data-lang="zh">车辆远程监控报警实现装置</span></div>
+            <div class="patent"><span class="patent-no">200920122196.6</span>｜<span data-lang="en">Massive Real-Time Data Acquisition and Control Device Based on 3G Wireless Network</span><span data-lang="zh">基于3G无线网络海量实时数据采控装置</span></div>
+            <div class="patent"><span class="patent-no">201020658231.9</span>｜<span data-lang="en">Lane Matching Analysis Device</span><span data-lang="zh">一种车线匹配分析装置</span></div>
+            <div class="patent"><span class="patent-no">201020657981.4</span>｜<span data-lang="en">Driver Behavior Monitoring Device</span><span data-lang="zh">司机行为监测装置</span></div>
+            <div class="patent"><span class="patent-no">201120293978.3</span>｜<span data-lang="en">Anti-Tamper Injection-Molded Integrated Solenoid Valve with Control Circuit and Actuator</span><span data-lang="zh">防拆注塑型控制电路、执行机构一体化电磁阀</span></div>
+            <div class="patent"><span class="patent-no">201120328663.8</span>｜<span data-lang="en">Engineering Machinery Device with Remote Authorization Availability</span><span data-lang="zh">远程授权可用的工程机械实现装置</span></div>
+            <div class="patent"><span class="patent-no">201120083887.7</span>｜<span data-lang="en">Intelligent Passenger Counting Device for Vehicle Boarding and Alighting</span><span data-lang="zh">车辆上下车人数智能计数实现装置</span></div>
+            <div class="patent"><span class="patent-no">201120083814.8</span>｜<span data-lang="en">Passenger Counter Based on Pyroelectric Infrared Sensor</span><span data-lang="zh">基于热释红外传感器的人数计数器实现装置</span></div>
+            <div class="patent"><span class="patent-no">201120437628.X</span>｜<span data-lang="en">Intelligent Instrument Device with Embedded Image Monitoring</span><span data-lang="zh">内嵌图像监控的智能仪表实现装置</span></div>
+            <div class="patent"><span class="patent-no">201120474369.8</span>｜<span data-lang="en">Electronic Throttle Energy-Saving Device Based on Vibration Road Surface and Driver Unconscious Control</span><span data-lang="zh">基于振动路面司机无意识控制电子油门节能实现装置</span></div>
+            <div class="patent"><span class="patent-no">201220006757.8</span>｜<span data-lang="en">Tower Crane Overload, Strong Wind Warning, and Anti-Collision System Device</span><span data-lang="zh">塔吊超载、大风告警、防撞系统实现装置</span></div>
+            <div class="patent"><span class="patent-no">201220393497.4</span>｜<span data-lang="en">Immediate Locking Device upon Disassembly</span><span data-lang="zh">拆机立即锁机实现装置</span></div>
+            <div class="patent"><span class="patent-no">201220140178.2</span>｜<span data-lang="en">Chip and Terminal Device Based on BeiDou Satellite Applications</span><span data-lang="zh">基于北斗卫星应用的芯片及终端实现装置</span></div>
+            <div class="patent"><span class="patent-no">201220362858.9</span>｜<span data-lang="en">Safety Lock Device for Rental Vehicle Arrears</span><span data-lang="zh">租赁车辆欠费安全锁实现装置</span></div>
+            <div class="patent"><span class="patent-no">201420409279.4</span>｜<span data-lang="en">Vehicle Inspection System Based on the Internet of Vehicles</span><span data-lang="zh">基于车联网的车辆稽查系统</span></div>
+            <div class="patent"><span class="patent-no">201010040003.X</span>｜<span data-lang="en">Vehicle Mobile Monitoring Device</span><span data-lang="zh">车辆移动监控实现装置</span></div>
+            <div class="patent"><span class="patent-no">201410353437.3</span>｜<span data-lang="en">IoV Inspection System Based on Cloud Computing and Big Data</span><span data-lang="zh">基于云计算和大数据的车联网稽查系统</span></div>
+            <div class="patent"><span class="patent-no">201420685006.2</span>｜<span data-lang="en">Urban Congestion Charging and Inspection System</span><span data-lang="zh">城市拥堵收费及稽查系统</span></div>
+            <div class="patent"><span class="patent-no">201410649143.5</span>｜<span data-lang="en">Traffic Congestion Control and Inspection System Based on the Internet of Vehicles</span><span data-lang="zh">基于车联网的交通拥堵控制与稽查系统</span></div>
+            <div class="patent"><span class="patent-no">201210259518.8</span>｜<span data-lang="en">Remote Vehicle Locking Device</span><span data-lang="zh">远程锁车实现装置</span></div>
+            <div class="patent"><span class="patent-no">201210282321.6</span>｜<span data-lang="en">Secondary Vehicle Locking Method</span><span data-lang="zh">二次锁车实现方法</span></div>
+            <div class="patent"><span class="patent-no">201210097754.4</span>｜<span data-lang="en">Vehicle Information Terminal Device</span><span data-lang="zh">车载信息终端实现装置</span></div>
+            <div class="patent"><span class="patent-no">200910099725.X</span>｜<span data-lang="en">Remote Data Acquisition and Control Gateway Based on 3G Communication</span><span data-lang="zh">基于3G通信远程数据采控网关</span></div>
+            <div class="patent"><span class="patent-no">201110231782.6</span>｜<span data-lang="en">Anti-Tamper Integrated Solenoid Valve Device Supporting Remote Control</span><span data-lang="zh">支持远程控制的防拆一体化电磁阀实现装置</span></div>
+            <div class="patent"><span class="patent-no">201110259027.9</span>｜<span data-lang="en">Vehicle Remote Management and Control Device</span><span data-lang="zh">车辆远程管理控制实现装置</span></div>
+            <div class="patent"><span class="patent-no">201110349290.7</span>｜<span data-lang="en">Intelligent Instrument Device Based on OSG Screen Splitter</span><span data-lang="zh">基于OSG画面分割器的智能仪表实现装置</span></div>
+            <div class="patent"><span class="patent-no">201110379175.4</span>｜<span data-lang="en">Electronic Throttle Energy-Saving Device</span><span data-lang="zh">电子油门节能实现装置</span></div>
+            <div class="patent"><span class="patent-no">201210004608.2</span>｜<span data-lang="en">Integrated Tower Crane Safety Device with Image Monitoring and Anti-Collision</span><span data-lang="zh">图像监控、防撞一体化塔吊安全实现装置</span></div>
+            <div class="patent"><span class="patent-no">201010587087.9</span>｜<span data-lang="en">Driver Behavior Monitoring Method and Device</span><span data-lang="zh">司机行为监测方法及装置</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="other-directions">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Other Directions</span><span data-lang="zh">其它方向</span></h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><span data-lang="en">Super-Resolution Microscopy</span><span data-lang="zh">超分辨率显微镜</span></h3>
+            <ul class="list">
+              <li><strong>CN2018100902013</strong> · <span data-lang="en">Synchronous Orthogonal Laser Image Reconstruction Super-Resolution Microscope</span><span data-lang="zh">同步正交激光图像重建超分辨率显微镜</span></li>
+              <li><strong>CN2017101223034</strong> · <span data-lang="en">Proton Microscope, Spectrometer, and Energy Spectrometer</span><span data-lang="zh">质子显微镜、波谱仪、能谱仪</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span data-lang="en">Terahertz Products (6G Antenna)</span><span data-lang="zh">太赫兹产品（6G天线）</span></h3>
+            <ul class="list">
+              <li><strong>CN2018101528408</strong> · <span data-lang="en">Semiconductor Wireless Transmitting and Receiving Antenna</span><span data-lang="zh">半导体无线发射、接收天线</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:22px;">
+          <h3><span data-lang="en">Original Innovations in Artificial Intelligence</span><span data-lang="zh">人工智能原始创新</span></h3>
+          <div class="grid-2">
+            <div>
+              <h4 style="margin:0 0 10px;color:#173f66;"><span data-lang="en">Papers</span><span data-lang="zh">论文</span></h4>
+              <ul class="list">
+                <li><strong>The Theory of Artificial Intelligence Innovation</strong> · DOI: <a href="https://doi.org/10.2139/ssrn.5415854" target="_blank">10.2139/ssrn.5415854</a></li>
+                <li><strong>Forecast of Compute Platform Development</strong> · DOI: <a href="https://doi.org/10.2139/ssrn.5714822" target="_blank">10.2139/ssrn.5714822</a></li>
+                <li><strong>Optical Fiber Chemistry and the Artificial-Intelligence Chemistry Platform</strong> · DOI: <a href="https://doi.org/10.26434/chemrxiv-2025-dg30l" target="_blank">10.26434/chemrxiv-2025-dg30l</a></li>
+                <li>Dynamic Reconfigurable Instruction Computer · <span data-lang="en">Computer Era, 2008 Issue 03</span><span data-lang="zh">《计算机时代》2008年03期</span></li>
+                <li>SOC/IP-Based Intelligent Power System · <span data-lang="en">Journal of Electric Power Systems and Automation, 2002 Issue 08</span><span data-lang="zh">《电力系统及其自动化学报》2002年08期</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="margin:0 0 10px;color:#173f66;"><span data-lang="en">Patents</span><span data-lang="zh">专利</span></h4>
+              <ul class="list">
+                <li><strong>CN2006101554274</strong> · <span data-lang="en">Programmable Instruction-Set Computer Integrated Circuit</span><span data-lang="zh">可编程指令集计算机集成电路</span></li>
+                <li><strong>CN2007100709605</strong> · <span data-lang="en">Dynamically Reconfigurable Instruction Processor Configuration and Communication Controller</span><span data-lang="zh">动态可重构指令处理器配置及通信控制器</span></li>
+                <li><strong>CN2025109979203</strong> · <span data-lang="en">Programmable Chemistry System</span><span data-lang="zh">可编程化学系统</span></li>
+                <li><strong>CN2025110533867</strong> · <span data-lang="en">Artificial Intelligence</span><span data-lang="zh">人工智能</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="industry">
+      <div class="container">
+        <h2 class="section-title"><span data-lang="en">Industrial Technology and System Innovation</span><span data-lang="zh">产业技术与系统创新</span></h2>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3><span data-lang="en">Core Technology System of Triple-Play Convergence</span><span data-lang="zh">“三网融合”核心技术体系</span></h3>
+            <p data-lang="en">Since March 2003, he led product invention and R&D at Hangzhou Chuling Information Technology Co., Ltd., playing a major founding and leading role in China’s triple-play convergence technology and product system.</p>
+            <p data-lang="zh">自2003年3月起，在杭州初灵信息技术股份有限公司主持产品发明与研发工作，在中国“三网融合”关键技术和产品体系建设中发挥重要的开创性和主导性作用。</p>
+            <ul class="list">
+              <li data-lang="en">Systematic innovation in EoC, NGB access networks, digital home intelligent terminals, multi-screen interaction, trusted coaxial cable systems, and TDMA dynamic timeslot allocation.</li>
+              <li data-lang="zh">围绕 EoC、NGB 接入网、数字家庭智能终端、多屏互动、可信同轴电缆系统、TDMA 动态时隙分配等方向形成系统创新。</li>
+              <li data-lang="en">Produced representative papers and patents.</li>
+              <li data-lang="zh">形成代表性论文与专利成果。</li>
+              <li data-lang="en">Helped establish an important foundation for China’s triple-play technological routes and application systems.</li>
+              <li data-lang="zh">为国内三网融合技术路线与应用体系奠定重要基础。</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item">
+            <h3><span data-lang="en">Industry Technology System of the Internet of Vehicles</span><span data-lang="zh">“车联网”行业技术体系</span></h3>
+            <p data-lang="en">Since October 2009, he has led product invention and R&D at Hangzhou HopeChart IoT Technology Co., Ltd., continuously advancing original system innovation in key application technologies and solutions for the Internet of Vehicles in China.</p>
+            <p data-lang="zh">自2009年10月起，在杭州鸿泉物联技术股份有限公司主持产品发明与研发工作，在中国车联网行业关键应用技术和系统方案方面开展持续创新。</p>
+            <ul class="list">
+              <li data-lang="en">Continuous innovation in vehicle identification, lawful operation recognition, dynamic weighing, dump truck supervision, new-energy vehicle driver behavior analysis, EV safety and energy saving, cloud communication, remote locking, and traffic inspection.</li>
+              <li data-lang="zh">围绕车辆识别、合法运营识别、动态载重、渣土车监管、新能源车驾驶行为分析、电动汽车安全与节能、云通信、远程锁车、交通稽查等方向进行持续创新。</li>
+              <li data-lang="en">Produced representative patents and built a multidimensional patent system.</li>
+              <li data-lang="zh">形成代表性专利并构建多维度专利体系。</li>
+              <li data-lang="en">Made systematic contributions to industry deployment and system innovation in China’s Internet of Vehicles.</li>
+              <li data-lang="zh">对国内车联网行业应用落地和系统创新作出系统性探索与推动。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <div class="card">
+          <h3><span data-lang="en">Academic and Technical Style</span><span data-lang="zh">学术与技术风格</span></h3>
+          <ul class="list">
+            <li data-lang="en"><strong>Strong originality:</strong> continuous proposal of new concepts, architectures, and systems.</li>
+            <li data-lang="zh"><strong>原创性强：</strong>持续提出新概念、新架构、新系统。</li>
+            <li data-lang="en"><strong>Strong leadership:</strong> long-term role in overall solution design and system R&D leadership.</li>
+            <li data-lang="zh"><strong>主导性强：</strong>长期承担总体方案设计与系统研发主导角色。</li>
+            <li data-lang="en"><strong>Outstanding key contribution:</strong> combines originality, route design, and key implementation ability.</li>
+            <li data-lang="zh"><strong>关键贡献突出：</strong>兼具首创性、路线设计与关键实现能力。</li>
+            <li data-lang="en"><strong>Strong engineering implementation:</strong> continuously transforms achievements into products, systems, and application scenarios.</li>
+            <li data-lang="zh"><strong>工程落地能力强：</strong>推动成果向产品、系统和应用场景转化。</li>
+            <li data-lang="en"><strong>Strong interdisciplinary capability:</strong> long-term integration across mathematics, chemistry, energy, communication, AI, and intelligent transportation.</li>
+            <li data-lang="zh"><strong>跨学科综合能力强：</strong>长期横跨数学、化学、能源、通信、AI、智能交通等领域。</li>
+          </ul>
+        </div>
+        <div class="highlight-box">
+          <h3><span data-lang="en">Honors and Awards</span><span data-lang="zh">荣誉与奖励</span></h3>
+          <p data-lang="en">• Jiangsu Provincial Science and Technology Progress Award</p>
+          <p data-lang="zh">• 江苏省科学技术进步奖</p>
+          <p data-lang="en">• Zhejiang Provincial Radio and Television Science and Technology Innovation Award</p>
+          <p data-lang="zh">• 浙江省广播电视科学技术创新奖</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card">
+          <h3><span data-lang="en">Summary</span><span data-lang="zh">总结</span></h3>
+          <p data-lang="en">Shiping Gu is a researcher and inventor who combines the ability to found original theories, create major system inventions, and drive industrial implementation. His work spans the full chain from foundational theory and system architecture to key inventions, engineering realization, and industrial application.</p>
+          <p data-lang="zh">顾士平是一位兼具原创理论开创能力、重大系统发明能力和产业技术落地能力的研究者与发明人。其工作贯穿基础理论—系统架构—关键发明—工程实现—产业应用全过程，在多个领域体现出鲜明的首创者、主导者、关键发明人特征。</p>
+          <p data-lang="en">Whether in frontier original directions such as Structural-State Mathematics and the Optical Fiber Chemistry–Artificial Intelligence Platform, or in industrial key technologies such as triple-play convergence and the Internet of Vehicles, he has demonstrated sustained pioneering exploration and system innovation, forming a relatively complete and representative body of original achievements.</p>
+          <p data-lang="zh">无论是在结构态数学和光纤化学—人工智能平台等前沿原创方向，还是在三网融合与车联网等产业关键技术领域，均表现出持续的开创性探索精神和系统创新能力，形成了较为完整且具有代表性的原创成果体系。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span data-lang="en">© Shiping Gu · Personal Academic Website</span>
+      <span data-lang="zh">© 顾士平 · 个人学术主页</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const body = document.body;
+      const topbar = document.querySelector('.topbar');
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const langButtons = document.querySelectorAll('.lang-btn');
+      const saved = localStorage.getItem('site-language');
+      const defaultLang = saved || 'en';
+
+      function setLang(lang) {
+        html.setAttribute('data-current-lang', lang);
+        html.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        localStorage.setItem('site-language', lang);
+        document.title = lang === 'zh' ? '顾士平｜个人主页' : 'Shiping Gu | Personal Website';
+      }
+
+      function closeMenu() {
+        if (!topbar || !navToggle) return;
+        topbar.classList.remove('is-open');
+        body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMenu() {
+        if (!topbar || !navToggle) return;
+        const willOpen = !topbar.classList.contains('is-open');
+        topbar.classList.toggle('is-open', willOpen);
+        body.classList.toggle('menu-open', willOpen && window.innerWidth <= 768);
+        navToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      }
+
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+          setLang(this.getAttribute('data-set-lang'));
+        });
+      });
+
+      if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+      }
+
+      if (navLinks) {
+        navLinks.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) {
+          body.classList.remove('menu-open');
+          if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+          if (topbar) topbar.classList.remove('is-open');
+        }
+      });
+
+      setLang(defaultLang);
+      closeMenu();
+    })();
+  </script>
+</body>
+</html>
