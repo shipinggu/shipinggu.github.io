@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-current-lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f4c81" />
-  <title>Shiping Gu | Personal Website</title>
+  <title>顾士平｜个人主页</title>
   <meta name="description" content="Personal website of Shiping Gu: Structural-State Mathematics, Optical Fiber Chemistry, Artificial Intelligence, energy storage and carbon sequestration, triple-play convergence, Internet of Vehicles, and other interdisciplinary innovations." />
   <style>
     :root {
@@ -88,6 +88,10 @@
       cursor: pointer;
       font-weight: 600;
       color: var(--primary);
+    }
+
+    .topbar-mobile-lang {
+      display: none;
     }
 
     .hero {
@@ -461,10 +465,23 @@
         border: 1px solid #e3edf9;
       }
 
-      .lang-switch {
+      .nav-links .lang-switch {
+        display: none;
+      }
+
+      .topbar-mobile-lang {
+        display: flex;
+        justify-content: center;
+        padding: 2px 0 4px;
+      }
+
+      .topbar-mobile-lang .lang-switch {
+        width: auto;
+        min-width: 180px;
         margin-left: 0;
-        display: grid;
+        display: inline-grid;
         grid-template-columns: 1fr 1fr;
+        box-shadow: 0 6px 18px rgba(15, 76, 129, 0.10);
       }
 
       .lang-btn {
@@ -544,6 +561,12 @@
           ☰
         </button>
       </div>
+      <div class="topbar-mobile-lang" aria-label="Language switch">
+        <span class="lang-switch">
+          <button class="lang-btn" data-set-lang="en" type="button">English</button>
+          <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
+        </span>
+      </div>
       <nav class="nav-links" id="site-nav" aria-label="Primary">
         <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
         <a href="#achievements"><span data-lang="en">Achievements</span><span data-lang="zh">成就总览</span></a>
@@ -555,7 +578,7 @@
         <a href="#industry"><span data-lang="en">Industry</span><span data-lang="zh">产业技术</span></a>
         <a href="#honors"><span data-lang="en">Honors</span><span data-lang="zh">荣誉</span></a>
         <span class="lang-switch">
-          <button class="lang-btn" data-set-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-set-lang="en" type="button">English</button>
           <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
         </span>
       </nav>
@@ -1122,8 +1145,8 @@
         if (window.innerWidth > 760) closeMenu();
       });
 
-      // Always open in English by default.
-      setLang('en');
+      // Always open in Chinese by default.
+      setLang('zh');
       closeMenu();
     })();
   </script>
