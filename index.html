@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-current-lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shiping Gu | Personal Website</title>
+  <meta name="theme-color" content="#0f4c81" />
+  <title>顾士平｜个人主页</title>
   <meta name="description" content="Personal website of Shiping Gu: Structural-State Mathematics, Optical Fiber Chemistry, Artificial Intelligence, energy storage and carbon sequestration, triple-play convergence, Internet of Vehicles, and other interdisciplinary innovations." />
   <style>
     :root {
@@ -27,6 +28,8 @@
       color: var(--text);
       background: linear-gradient(180deg, #f8fbff 0%, #f4f6fa 100%);
       line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
     }
 
     a { color: var(--accent); text-decoration: none; }
@@ -85,6 +88,32 @@
       cursor: pointer;
       font-weight: 600;
       color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .topbar-mobile-lang {
+      position: fixed;
+      top: calc(env(safe-area-inset-top, 0px) + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 120;
+      display: flex;
+      justify-content: center;
+      width: auto;
+      pointer-events: none;
+    }
+
+    .topbar-mobile-lang .lang-switch {
+      pointer-events: auto;
+      margin-left: 0;
+      min-width: 190px;
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 8px 24px rgba(15, 76, 129, 0.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 227, 238, 0.96);
     }
 
     .hero {
@@ -350,26 +379,210 @@
       color: #fff;
     }
 
+
+    img, svg { max-width: 100%; height: auto; }
+
+    .nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
+      border-radius: 12px;
+      min-width: 44px;
+      height: 44px;
+      padding: 0 12px;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(15, 76, 129, 0.08);
+      cursor: pointer;
+    }
+
+    .menu-toggle:focus-visible,
+    .lang-btn:focus-visible,
+    .btn:focus-visible,
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .nav-links a {
+      white-space: nowrap;
+    }
+
+    .paper, .patent, .meta div, .timeline-item, .card, .hero-card, .highlight-box {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .brand, .paper-title, .patent-no {
+      overflow-wrap: anywhere;
+    }
+
+    .footer span[data-lang] {
+      display: none;
+    }
+    html[data-current-lang="en"] .footer span[data-lang="en"],
+    html[data-current-lang="zh"] .footer span[data-lang="zh"] {
+      display: inline;
+    }
+
     @media (max-width: 920px) {
       .hero-grid, .grid-2 { grid-template-columns: 1fr; }
       .hero { padding-top: 40px; }
+      .columns { columns: 1; }
     }
 
-    @media (max-width: 640px) {
-      .container { width: min(var(--max), calc(100% - 20px)); }
-      .hero-card, .card, .profile-card, .timeline-item { padding: 20px; }
-      .nav { align-items: flex-start; flex-direction: column; }
-      .nav-links { gap: 10px 14px; }
-      .section-title { font-size: 24px; }
-      .hero h2 { font-size: 18px; }
+    @media (max-width: 760px) {
+      .topbar {
+        padding-top: env(safe-area-inset-top, 0);
+      }
+
+      .nav {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        background: rgba(255,255,255,0.98);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 12px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a,
+      .lang-switch {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #f8fbff;
+        border: 1px solid #e3edf9;
+      }
+
+      .nav-links .lang-switch {
+        display: none;
+      }
+
+      .topbar-mobile-lang {
+        top: calc(env(safe-area-inset-top, 0px) + 10px);
+      }
+
+      .topbar-mobile-lang .lang-switch {
+        min-width: 196px;
+      }
+
+      .lang-btn {
+        min-height: 44px;
+      }
+
+      .hero {
+        padding: 24px 0 18px;
+      }
+
+      .hero-card, .profile-card, .card, .timeline-item {
+        border-radius: 20px;
+      }
+
+      .tag-list {
+        gap: 8px;
+        margin: 18px 0 22px;
+      }
+
+      .tag {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .actions .btn {
+        width: 100%;
+        min-height: 46px;
+      }
+
+      .profile-avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        font-size: 26px;
+        margin-bottom: 16px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+
+      .timeline-item::before {
+        top: 18px;
+        bottom: 18px;
+      }
     }
+
+    @media (max-width: 480px) {
+      .container { width: min(var(--max), calc(100% - 16px)); }
+      .hero-card, .card, .profile-card, .timeline-item, .highlight-box { padding: 18px; }
+      .nav { padding: 10px 0; }
+      .brand { font-size: 16px; }
+      .hero h1 { font-size: clamp(28px, 9vw, 38px); }
+      .hero h2 { font-size: 17px; }
+      .section-subtitle { margin-bottom: 16px; }
+      .list { padding-left: 18px; }
+      .footer { padding: 24px 0 34px; font-size: 13px; }
+    }
+
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <div class="brand">Shiping Gu | 顾士平</div>
-      <nav class="nav-links">
+      <div class="nav-header">
+        <div class="brand">Shiping Gu | 顾士平</div>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          ☰
+        </button>
+      </div>
+      <div class="topbar-mobile-lang" aria-label="Language switch">
+        <span class="lang-switch">
+          <button class="lang-btn" data-set-lang="en" type="button">English</button>
+          <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
+        </span>
+      </div>
+      <nav class="nav-links" id="site-nav" aria-label="Primary">
         <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
         <a href="#achievements"><span data-lang="en">Achievements</span><span data-lang="zh">成就总览</span></a>
         <a href="#contributions"><span data-lang="en">Contributions</span><span data-lang="zh">核心贡献</span></a>
@@ -379,10 +592,6 @@
         <a href="#other-directions"><span data-lang="en">Other Directions</span><span data-lang="zh">其它方向</span></a>
         <a href="#industry"><span data-lang="en">Industry</span><span data-lang="zh">产业技术</span></a>
         <a href="#honors"><span data-lang="en">Honors</span><span data-lang="zh">荣誉</span></a>
-        <span class="lang-switch">
-          <button class="lang-btn" data-set-lang="en" type="button">EN</button>
-          <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
-        </span>
       </nav>
     </div>
   </header>
@@ -896,28 +1105,62 @@
     </div>
   </footer>
 
+  
   <script>
     (function () {
       const html = document.documentElement;
       const buttons = document.querySelectorAll('.lang-btn');
-      const saved = localStorage.getItem('site-language');
-      const defaultLang = saved || 'en';
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
 
       function setLang(lang) {
         html.setAttribute('data-current-lang', lang);
         html.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-        localStorage.setItem('site-language', lang);
         document.title = lang === 'zh' ? '顾士平｜个人主页' : 'Shiping Gu | Personal Website';
+      }
+
+      function closeMenu() {
+        if (!nav || !menuToggle) return;
+        nav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      }
+
+      function toggleMenu() {
+        if (!nav || !menuToggle) return;
+        const isOpen = nav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        menuToggle.textContent = isOpen ? '✕' : '☰';
       }
 
       buttons.forEach(btn => {
         btn.addEventListener('click', function () {
           setLang(this.getAttribute('data-set-lang'));
+          if (window.innerWidth <= 760) closeMenu();
         });
       });
 
-      setLang(defaultLang);
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+      }
+
+      if (nav) {
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function () {
+            if (window.innerWidth <= 760) closeMenu();
+          });
+        });
+      }
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 760) closeMenu();
+      });
+
+      // Always open in Chinese by default.
+      setLang('zh');
+      closeMenu();
     })();
   </script>
+
 </body>
 </html>
