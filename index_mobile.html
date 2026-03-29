@@ -88,10 +88,32 @@
       cursor: pointer;
       font-weight: 600;
       color: var(--primary);
+      white-space: nowrap;
     }
 
     .topbar-mobile-lang {
-      display: none;
+      position: fixed;
+      top: calc(env(safe-area-inset-top, 0px) + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 120;
+      display: flex;
+      justify-content: center;
+      width: auto;
+      pointer-events: none;
+    }
+
+    .topbar-mobile-lang .lang-switch {
+      pointer-events: auto;
+      margin-left: 0;
+      min-width: 190px;
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 8px 24px rgba(15, 76, 129, 0.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 227, 238, 0.96);
     }
 
     .hero {
@@ -470,18 +492,11 @@
       }
 
       .topbar-mobile-lang {
-        display: flex;
-        justify-content: center;
-        padding: 2px 0 4px;
+        top: calc(env(safe-area-inset-top, 0px) + 10px);
       }
 
       .topbar-mobile-lang .lang-switch {
-        width: auto;
-        min-width: 180px;
-        margin-left: 0;
-        display: inline-grid;
-        grid-template-columns: 1fr 1fr;
-        box-shadow: 0 6px 18px rgba(15, 76, 129, 0.10);
+        min-width: 196px;
       }
 
       .lang-btn {
@@ -577,10 +592,6 @@
         <a href="#other-directions"><span data-lang="en">Other Directions</span><span data-lang="zh">其它方向</span></a>
         <a href="#industry"><span data-lang="en">Industry</span><span data-lang="zh">产业技术</span></a>
         <a href="#honors"><span data-lang="en">Honors</span><span data-lang="zh">荣誉</span></a>
-        <span class="lang-switch">
-          <button class="lang-btn" data-set-lang="en" type="button">English</button>
-          <button class="lang-btn" data-set-lang="zh" type="button">中文</button>
-        </span>
       </nav>
     </div>
   </header>
