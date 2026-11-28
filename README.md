@@ -1,12 +1,3 @@
-# 光纤化学 | Optical Fiber Chemistry
-
-[进入光纤化学官方网站 / Optical Fiber Chemistry Website](https://shipinggu.github.io/optical-fiber-chemistry.html)
-
-光纤化学是一种基于光纤光场调控、多场耦合及可编程化学反应的新型研究体系。
-
-研究内容：光纤化学原理、理论、方法、专利及学术论文。
-
-
 
 
 # Shiping Gu Personal Website / 顾士平个人网站
